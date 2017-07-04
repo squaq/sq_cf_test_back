@@ -17,15 +17,10 @@ function listTasks(app) {
     app.route(mainUri+'/users').get(list.list_users);
     app.route(mainUri+'/auth').post(list.auth);
               
-//    app.route('/tasks')
-//        .get(list.list_all_tasks)
-//        .post(list.create_a_task);
-//
-//    app.route('/tasks/:taskId')
-//        .get(list.read_a_task)
-//        .put(list.update_a_task)
-//        .delete(list.delete_a_task);
     
+    app.use(['/api'], function(req, res) {
+        res.send('<h1>API IS WORKING</h1>');
+    });
     app.use(function(req, res) {
         res.status(404).send({url: req.originalUrl + ' not found'})
     });
